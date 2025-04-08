@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('gatos', function (Blueprint $table) {
             $table->id(); 
             $table->string('nombre');
-            $table->integer('edad')->nullable();
+            $table->date('edad')->nullable();
             $table->enum('sexo', ['macho', 'hembra'])->nullable();
             $table->text('descripcion')->nullable();
             $table->binary('imagen')->nullable(); 

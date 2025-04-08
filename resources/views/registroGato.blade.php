@@ -19,8 +19,7 @@
         </div>
     @endif
 
-    <!-- El formulario usa POST; no es necesario multipart/form-data si no se sube archivos,
-         pero en este caso sí se sube la imagen, aunque la procesamos en binario -->
+    <!-- Se usa multipart/form-data para subir la imagen -->
     <form action="{{ route('gato.registro') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
@@ -29,9 +28,10 @@
             <input type="text" class="form-control" id="nombre" name="nombre" required>
         </div>
 
+        <!-- Cambiamos el campo para que sea de tipo date y se pueda elegir la fecha -->
         <div class="mb-3">
-            <label for="edad" class="form-label">Edad</label>
-            <input type="number" class="form-control" id="edad" name="edad" required>
+            <label for="edad" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="edad" name="edad" required>
         </div>
 
         <div class="mb-3">

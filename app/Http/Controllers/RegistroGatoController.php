@@ -18,7 +18,7 @@ class RegistroGatoController extends Controller
     {
         $r->validate([
             'nombre'          => 'required|string|max:255',
-            'edad'            => 'required|numeric',
+            'edad'            => 'required|date',
             'sexo'            => 'required|in:macho,hembra',
             'descripcion'     => 'nullable|string',
             'imagen'          => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
