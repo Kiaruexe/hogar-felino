@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Gato extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'nombre',
+        'edad',
+        'sexo',
+        'descripcion',
+        'imagen',
+        'casa_acogida_id'
+    ];
+
+
+
+public function casaAcogida()
+{
+    return $this->belongsTo(Casa::class, 'casa_acogida_id');
+}
+}
