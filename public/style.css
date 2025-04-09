@@ -1,0 +1,176 @@
+/* ================================================
+   CUSTOM.CSS - Estilos Globales para la Aplicación
+   Paleta:
+     - Primario:  #006d77
+     - Secundario: #83c5be
+     - Acente:     #edf6f9
+     - Oscuro:     #343a40
+     - Claro:      #f8f9fa
+================================================ */
+
+/* --- Global Styles --- */
+body {
+    background-color: #edf6f9; /* Fondo claro */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #343a40; /* Color oscuro para textos */
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Navegación --- */
+.navbar {
+    background-color: #006d77; /* Primario */
+}
+.navbar-brand {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.navbar-brand img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.nav-link {
+    color: #edf6f9 !important;
+    transition: color 0.2s;
+}
+.nav-link:hover {
+    color: #83c5be !important; /* Secundario */
+}
+
+/* --- Banner Principal --- */
+.banner {
+    background-image: url('/images/prueba.jpeg'); /* Actualiza esta URL si lo deseas */
+    background-size: cover;
+    background-position: center;
+    padding: 3rem 0;
+    color: #fff;
+    text-align: center;
+}
+.banner h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.banner p {
+    font-size: 1.25rem;
+}
+
+/* --- Formularios (Login, Registro de Casas, Registro de Gatos) --- */
+.login-container,
+.registration-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.login-container h2,
+.registration-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.form-control,
+.form-select {
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: #006d77;
+    box-shadow: none;
+}
+
+/* --- Botones --- */
+.btn-primary {
+    background-color: #006d77;
+    border-color: #006d77;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.btn-primary:hover {
+    background-color: #005c67;
+    border-color: #005c67;
+}
+.btn-secondary {
+    background-color: #83c5be;
+    border-color: #83c5be;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover {
+    background-color: #6bb1ad;
+    border-color: #6bb1ad;
+}
+
+/* --- Grid de Tarjetas (Listado/Index de Gatos) --- */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    transition: transform 0.2s;
+    background-color: #fff;
+}
+.card:hover {
+    transform: scale(1.02);
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* --- Vistas de Detalle --- */
+.detail-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.detail-container img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #006d77;
+    color: #edf6f9;
+    padding: 1.5rem 0;
+    text-align: center;
+    margin-top: 2rem;
+}
+footer a {
+    color: #83c5be;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- Utilidades --- */
+.img-container {
+    height: 200px;
+    overflow: hidden;
+}
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* --- Estilos Específicos del CSS a adaptar --- */
+
+/* Estilo para la barra de navegación (ya incluido en la sección de Navegación) */
+/* Banner principal (ya incluido) */
+
+/* Grid de tarjetas y Footer (ya incluido) */

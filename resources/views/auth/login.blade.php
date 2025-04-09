@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Login Casa de Acogida</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
 <body>
 <div class="container mt-5">
     <h2>Login Casa de Acogida</h2>

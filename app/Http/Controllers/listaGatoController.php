@@ -19,4 +19,10 @@ class listaGatoController extends Controller
         $gato = Gato::findOrFail($id);
         return view('mostrarGato', compact('gato'));
     }
+
+    public function home()
+    {
+        $gatos = Gato::all();
+        return view('index', ['gatos' => $gatos]);
+    }
 }
