@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Casas de Acogida</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-</head>
-<body>
-<div class="container mt-5">
+@extends('layout')
+
+@section('title', 'Inicio')
+
+@section('css')
+<!-- Puedes añadir CSS específico aquí si hace falta -->
+@endsection
+
+@section('content')
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -30,7 +29,10 @@
             </form>
         </div>
     @endif
-    <h1>Bienvenido a Casas de Acogida</h1>
-</div>
-</body>
-</html>
+
+    <h1 class="text-center">Bienvenido a Casas de Acogida</h1>
+@endsection
+
+@section('scripts')
+<!-- Scripts específicos si los necesitas -->
+@endsection

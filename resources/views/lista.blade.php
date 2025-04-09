@@ -1,23 +1,16 @@
 @extends('layout')
 
- @section('title', 'Adopción de Gatos')
+@section('title', 'Adopción de Gatos')
 
-
-
- @section('content')
-<!DOCTYPE html>
-<html lang="es"></html>
-<head>  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-    <div class="header-banner">
+@section('content')
+    <div class="header-banner py-5 text-center text-white" style="background-color: #006d77;">
         <div class="container">
             <h1>Gatos Adultos en Adopción</h1>
             <p>Encuentra el compañero perfecto y dale una segunda oportunidad</p>
         </div>
     </div>
-    <div class="container">
+
+    <div class="container my-5">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             @foreach ($gatos as $gato)
                 <div class="col">
@@ -53,7 +46,8 @@
             @endforeach
         </div>
     </div>
+@endsection
+
+@section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
 @endsection

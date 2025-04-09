@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Registro de Gato</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-</head>
-<body>
+@extends('layout')
+
+@section('title', 'Registro de Gato')
+
+@section('content')
 <div class="container mt-5">
     <h2>Registro de Gato</h2>
 
@@ -29,7 +25,6 @@
             <input type="text" class="form-control" id="nombre" name="nombre" required>
         </div>
 
-        <!-- Cambiamos el campo para que sea de tipo date y se pueda elegir la fecha -->
         <div class="mb-3">
             <label for="edad" class="form-label">Fecha de Nacimiento</label>
             <input type="date" class="form-control" id="edad" name="edad" required>
@@ -54,11 +49,13 @@
             <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
         </div>
 
-        <!-- Suponiendo que la casa de acogida ya está autenticada -->
         <input type="hidden" name="casa_acogida_id" value="{{ Auth::user()->id ?? '' }}">
 
         <button type="submit" class="btn btn-primary">Registrar Gato</button>
     </form>
 </div>
-</body>
-</html>
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+@endsection

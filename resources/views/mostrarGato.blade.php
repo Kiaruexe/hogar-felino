@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalle del Gato - {{ $gato->nombre }}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-</head>
-<body>
+@extends('layout')
+
+@section('title', 'Detalle del Gato - ' . $gato->nombre)
+
+@section('content')
 <div class="container mt-5">
     <a href="{{ route('gatos.lista') }}" class="btn btn-secondary mb-3">« Volver al listado</a>
     <div class="card">
@@ -15,10 +11,10 @@
                 <div class="img-container">
                     @if ($gato->imagen)
                         <img src="data:image/jpeg;base64,{{ base64_encode($gato->imagen) }}" 
-                             alt="Imagen de {{ $gato->nombre }}">
+                             alt="Imagen de {{ $gato->nombre }}" class="img-fluid">
                     @else
                         <img src="https://via.placeholder.com/300x200?text=Sin+Imagen" 
-                             alt="Sin imagen">
+                             alt="Sin imagen" class="img-fluid">
                     @endif
                 </div>
             </div>
@@ -42,6 +38,8 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+@endsection
