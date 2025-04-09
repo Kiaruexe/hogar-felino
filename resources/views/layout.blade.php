@@ -13,7 +13,10 @@
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('gatos.lista') }}">Casas de Acogida</a>
+            <a class="navbar-brand" href="{{ route('gatos.index') }}">
+                <img src="/images/logo.png" alt="Logo">
+                KiwokoAdopta
+              </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,6 +24,7 @@
             
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('registro') }}">Registrar Casa</a>
                     </li>
