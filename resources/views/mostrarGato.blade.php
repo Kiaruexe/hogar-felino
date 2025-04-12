@@ -22,7 +22,23 @@
                 <div class="card-body">
                     <h3 class="card-title">{{ $gato->nombre }}</h3>
                     <p class="card-text"><strong>Fecha de nacimiento:</strong> {{ \Carbon\Carbon::parse($gato->edad)->format('d/m/Y') }}</p>
-                    <p class="card-text"><strong>Edad:</strong> {{ $gato->edad_en_anios }} años</p>
+                    @php
+                    $birthDate = \Carbon\Carbon::parse($gato->edad);
+                    $now = \Carbon\Carbon::now();
+                    $diff = $birthDate->diff($now);
+                    $years = $diff->y;
+                    $months = $diff->m;
+                @endphp
+                <p class="card-text"><strong>Edad:</strong>
+                @if ($years > 0 && $months > 0)
+                    {{ $years }} {{ $years == 1 ? 'año' : 'años' }} y {{ $months }} {{ $months == 1 ? 'mes' : 'meses' }}
+                @elseif ($years > 0)
+                    {{ $years }} {{ $years == 1 ? 'año' : 'años' }}
+                @else
+                    {{ $months }} {{ $months == 1 ? 'mes' : 'meses' }}
+                @endif
+            </p>
+                    <p class="card-text"><strong>Raza:</strong> {{ $gato->raza ?? 'No especificada' }}</p>
                     <p class="card-text"><strong>Sexo:</strong> {{ ucfirst($gato->sexo) }}</p>
                     <p class="card-text"><strong>Descripción:</strong> {{ $gato->descripcion }}</p>
                     
@@ -30,6 +46,7 @@
                         <p class="card-text"><strong>Nombre de la Casa de Acogida:</strong> {{ $gato->casaAcogida->nombre }}</p>
                         <p class="card-text"><strong>Teléfono:</strong> {{ $gato->casaAcogida->telefono }}</p>
                         <p class="card-text"><strong>Email:</strong> {{ $gato->casaAcogida->email }}</p>
+                        <p class="card-text"><strong>Localizacion:</strong> {{ $gato->casaAcogida->localizacion }}</p>
                     @else
                         <p class="card-text text-muted">No hay información de la casa de acogida.</p>
                     @endif

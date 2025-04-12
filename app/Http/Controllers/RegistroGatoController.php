@@ -21,7 +21,7 @@ class RegistroGatoController extends Controller
             'edad'            => 'required|date',
             'sexo'            => 'required|in:macho,hembra',
             'descripcion'     => 'nullable|string',
-            'imagen'          => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'imagen'          => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,avif',
             'casa_acogida_id' => 'required|exists:casas,id',   
          ]);
     

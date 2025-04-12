@@ -16,19 +16,21 @@ class Gato extends Model
         'sexo',
         'descripcion',
         'imagen',
-        'casa_acogida_id'
+        'casa_acogida_id',
+        'raza',
+        'color'
     ];
 
-
-
-public function casaAcogida()
-{
-    return $this->belongsTo(Casa::class, 'casa_acogida_id');
-}
-
-public function getEdadEnAniosAttribute()
+    public function casaAcogida()
     {
-        if (!$this->edad) return null;
+        return $this->belongsTo(Casa::class, 'casa_acogida_id');
+    }
+
+    public function getEdadEnAniosAttribute()
+    {
+        if (!$this->edad) {
+            return null;
+        }
         return Carbon::parse($this->edad)->age;
     }
 }

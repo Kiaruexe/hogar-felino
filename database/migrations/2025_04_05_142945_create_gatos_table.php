@@ -17,12 +17,14 @@ return new class extends Migration
             $table->date('edad')->nullable();
             $table->enum('sexo', ['macho', 'hembra'])->nullable();
             $table->text('descripcion')->nullable();
-            $table->binary('imagen')->nullable(); 
+            $table->binary('imagen')->nullable();
+            $table->string('raza')->nullable();
+            $table->string('color')->nullable();
             $table->unsignedBigInteger('casa_acogida_id');
             $table->foreign('casa_acogida_id')
                   ->references('id')
                   ->on('casas')
-                  ->onDelete('cascade'); 
+                  ->onDelete('cascade');
             $table->timestamps(); 
         });
     }

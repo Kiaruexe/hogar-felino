@@ -21,6 +21,7 @@ class Casa extends Authenticatable
         'descripcion',
         'fechaRegistro',
         'estadoCuenta',
+        'localizacion',
         'rol'
     ];
 

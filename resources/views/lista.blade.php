@@ -28,15 +28,28 @@
                             <h5 class="card-title">{{ $gato->nombre }}</h5>
                             <p class="card-text">
                                 <strong>Nacimiento:</strong> 
-                                {{ $gato->edad ? \Carbon\Carbon::parse($gato->edad)->format('d/m/Y') : '-' }}
+                                {{ $gato->edad ? \Carbon\Carbon::parse($gato->edad)->format('d/m/Y') : '-' }}<br>
+                                @if($gato->edad)
+                                    @php
+                                        $birthDate = \Carbon\Carbon::parse($gato->edad);
+                                        $now = \Carbon\Carbon::now();
+                                        $diff = $birthDate->diff($now);
+                                        $years = $diff->y;
+                                        $months = $diff->m;
+                                    @endphp
+                                    @if($years > 0 && $months > 0)
+                                    
+                                    <p class="card-text"> <strong>Edad:</strong> {{ $years }} {{ $years == 1 ? 'año' : 'años' }} y {{ $months }} {{ $months == 1 ? 'mes' : 'meses' }}
+                                    @elseif($years > 0)
+                                        <strong>Edad:</strong> {{ $years }} {{ $years == 1 ? 'año' : 'años' }}
+                                    @else
+                                        <strong>Edad:</strong> {{ $months }} {{ $months == 1 ? 'mes' : 'meses' }}
+                                    @endif
+                                @endif
+                                <br><strong>Sexo:</strong> {{ ucfirst($gato->sexo) }}
+                                <br><strong>Raza:</strong> {{ $gato->raza ?? 'No especificada' }}
                             </p>
-                            <p class="card-text"><strong>Sexo:</strong> {{ ucfirst($gato->sexo) }}</p>
-                            @if($gato->edad)
-                                <p class="card-text">
-                                    <strong>Edad:</strong> 
-                                    {{ \Carbon\Carbon::parse($gato->edad)->age }} años
-                                </p>
-                            @endif
+                        </div>
                         </div>
                         <div class="card-footer text-center">
                             <a href="{{ route('gatos.mostrar', $gato->id) }}" class="btn btn-primary btn-sm">Ver detalles</a>

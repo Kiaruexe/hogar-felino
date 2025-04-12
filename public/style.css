@@ -8,13 +8,25 @@
      - Claro:      #f8f9fa
 ================================================ */
 
+/* Aseguramos que html y body ocupen toda la altura del viewport y eliminamos márgenes */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 /* --- Global Styles --- */
 body {
+    display: flex;
+    flex-direction: column;
     background-color: #edf6f9; /* Fondo claro */
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #343a40; /* Color oscuro para textos */
-    margin: 0;
-    padding: 0;
+}
+
+/* Contenedor principal que expande el espacio disponible */
+.content {
+    flex: 1;
 }
 
 /* --- Navegación --- */
@@ -27,10 +39,10 @@ body {
     align-items: center;
 }
 .navbar-brand img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
+    width: 50px;        /* Ajusta según tu preferencia */
+    height: auto;       /* Mantiene la proporción */
 }
+
 .nav-link {
     color: #edf6f9 !important;
     transition: color 0.2s;
@@ -41,7 +53,7 @@ body {
 
 /* --- Banner Principal --- */
 .banner {
-    background-image: url('/images/prueba.jpeg'); /* Actualiza esta URL si lo deseas */
+    background-color: #51b0a2;
     background-size: cover;
     background-position: center;
     padding: 3rem 0;
@@ -116,8 +128,10 @@ body {
     transform: scale(1.02);
 }
 .card-img-top {
-    height: 200px;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Muestra la imagen completa sin recortes */
+    background-color: #f8f9fa; /* Opcional: fondo claro para el espacio vacío si la imagen no llena todo */
 }
 .card-title {
     font-size: 1.2rem;
@@ -146,7 +160,7 @@ footer {
     color: #edf6f9;
     padding: 1.5rem 0;
     text-align: center;
-    margin-top: 2rem;
+    /* Evitamos usar margin-top extra para mantenerlo pegado al fondo en contenido corto */
 }
 footer a {
     color: #83c5be;
@@ -158,19 +172,14 @@ footer a:hover {
 
 /* --- Utilidades --- */
 .img-container {
-    height: 200px;
-    overflow: hidden;
+    height: 100%; /* o lo que necesites */
+    background-color: #f8f9fa;
 }
 .img-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
+    object-fit: contain;
 }
 
 /* --- Estilos Específicos del CSS a adaptar --- */
-
-/* Estilo para la barra de navegación (ya incluido en la sección de Navegación) */
-/* Banner principal (ya incluido) */
-
-/* Grid de tarjetas y Footer (ya incluido) */
+/* Mantén aquí cualquier otro estilo que necesites */
