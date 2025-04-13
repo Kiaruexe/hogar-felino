@@ -57,12 +57,20 @@ public function login(Request $r)
     $credentials = $r->only('email', 'password');
     $remember = $r->has('remember');
 
+    // Intentar autenticarse usando el guard "casa"
     if (Auth::guard('casa')->attempt($credentials, $remember)) {
         $r->session()->regenerate();
-        return redirect()->route('casa'); 
+    
+        
+        // Verificar el rol del usuario y redirigir en consecuencia
+        if (Auth::guard('casa')->user()->rol === 'admin') {
+            return redirect()->route('admin.index'); // Ruta para la zona de administración
+        } else {
+            return redirect()->route('casa'); // Ruta para la casa de acogida
+        }
     }
 
-    return back()->withErrors(['email' => 'Credenciales incorrectas.']);
+    return back()->withErrors(['email' => 'Credenciales incorrectas.'])->withInput();
 }
 
 public function logout(Request $r)

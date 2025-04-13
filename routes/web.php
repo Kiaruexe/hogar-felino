@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminCasaController;
+use App\Http\Controllers\AdminGatoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\listaGatoController;
 use App\Http\Controllers\RegistroGatoController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/registro', [AuthController::class, 'index'])->name('index');
@@ -42,3 +45,28 @@ Route::put('/gatos/{id}', [listaGatoController::class, 'update'])->name('gatos.u
 Route::delete('/gatos/{id}', [listaGatoController::class, 'destroy'])->name('gatos.destroy');
 
 });
+
+
+
+
+
+Route::middleware([AdminMiddleware::class])->group(function () {
+
+    Route::get('/admin', [AdminCasaController::class, 'indexAdmin'])->name('admin.index');
+
+
+    Route::get('/gatosAdmin', [AdminGatoController::class, 'index'])->name('admin.gatos.index');
+    Route::get('/gatosAdmin/{id}', [AdminGatoController::class, 'show'])->name('admin.gatos.show');
+    Route::get('/gatosAdmin/{id}/editar', [AdminGatoController::class, 'edit'])->name('admin.gatos.edit');
+    Route::put('/gatosAdmin/{id}', [AdminGatoController::class, 'update'])->name('admin.gatos.update');
+    Route::delete('/gatosAdmin/{id}', [AdminGatoController::class, 'destroy'])->name('admin.gatos.destroy');
+    
+    // Rutas para la administración de Casas de Acogida
+    Route::get('/casasAdmin', [AdminCasaController::class, 'index'])->name('admin.casas.index');
+    Route::get('/casasAdmin/{id}', [AdminCasaController::class, 'show'])->name('admin.casas.show');
+    Route::get('/casasAdmin/{id}/editar', [AdminCasaController::class, 'edit'])->name('admin.casas.edit');
+    Route::put('/casasAdmin/{id}', [AdminCasaController::class, 'update'])->name('admin.casas.update');
+    Route::delete('/casasAdmin/{id}', [AdminCasaController::class, 'destroy'])->name('admin.casas.destroy');
+    
+});
+

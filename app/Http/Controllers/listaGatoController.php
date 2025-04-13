@@ -50,42 +50,56 @@ class listaGatoController extends Controller
     {
         $gato = Gato::findOrFail($id);
         $casas = Casa::all();
-        // Validar que el gato pertenece a la casa logueada
-        if ($gato->casa_acogida_id !== Auth::id()) {
+        $casa = Auth::user(); // Llamada correcta mediante el Facade
+    
+        if ($casa->rol !== 'admin' && $gato->casa_acogida_id !== $casa->id) {
             abort(403, 'No tienes permiso para modificar este gato.');
         }
     
-        return view('editarGatos', compact('gato','casas'));
+        return view('editarGatos', compact('gato', 'casas'));
     }
+
+
     // Método para procesar la actualización (update)
     public function update(Request $request, $id)
-    {
-      $gato = Gato::findOrFail($id);
+{
+    $gato = Gato::findOrFail($id);
 
-      if ($gato->casa_acogida_id !== Auth::id()) {
-          abort(403, 'No tienes permiso para modificar este gato.');
-      }
-        $request->validate([
-            'nombre'          => 'required|string|max:255',
-            'edad'            => 'required|date',
-            'raza'            => 'nullable|string|max:255',
-            'descripcion'     => 'nullable|string',
-            'casa_acogida_id' => 'required|exists:casas,id',
-        ]);
+    // Obtener el usuario autenticado
+    $usuario = Auth::user();
 
-        $gato->nombre = $request->nombre;
-        $gato->edad = $request->edad; 
-        $gato->raza = $request->raza;
-        $gato->descripcion = $request->descripcion;
-        $gato->casa_acogida_id = $request->casa_acogida_id;
-        $gato->save();
-
-        return redirect()->route('gatos.lista')->with('status', 'Gato actualizado correctamente.');
+    // Si el usuario no es admin y el gato no pertenece a su casa, se aborta la operación
+    if ($usuario->rol !== 'admin' && $gato->casa_acogida_id !== $usuario->id) {
+        abort(403, 'No tienes permiso para modificar este gato.');
     }
+
+    $request->validate([
+        'nombre'          => 'required|string|max:255',
+        'edad'            => 'required|date',
+        'raza'            => 'nullable|string|max:255',
+        'descripcion'     => 'nullable|string',
+        'casa_acogida_id' => 'required|exists:casas,id',
+    ]);
+
+    $gato->nombre = $request->nombre;
+    $gato->edad = $request->edad; 
+    $gato->raza = $request->raza;
+    $gato->descripcion = $request->descripcion;
+    $gato->casa_acogida_id = $request->casa_acogida_id;
+    $gato->save();
+
+    return redirect()->route('gatos.lista')->with('status', 'Gato actualizado correctamente.');
+}
+
 
     public function casa()
     {
-        $gatos = Gato::all();
+        // Obtener la casa autenticada usando el guard "casa"
+        $casa = auth()->guard('casa')->user();
+        
+        // Filtrar los gatos que pertenecen a esta casa
+        $gatos = Gato::where('casa_acogida_id', $casa->id)->get();
+    
         return view('casa', compact('gatos'));
     }
     
