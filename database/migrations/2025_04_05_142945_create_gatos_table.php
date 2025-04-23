@@ -18,7 +18,29 @@ return new class extends Migration
             $table->enum('sexo', ['macho', 'hembra'])->nullable();
             $table->text('descripcion')->nullable();
             $table->binary('imagen')->nullable();
-            $table->string('raza')->nullable();
+            $table->enum('raza', [
+                'Común Europeo', 
+                'Balinés', 
+                'Peterbald', 
+                'Siamés',
+                'Oriental',
+                'Bengalí',
+                'Ocicat',
+                'Manx',
+                'Van Turco',
+                'Snowshoe',
+                'Savannah',
+                'American Curl',
+                'British Shorthair',
+                'Scottish Fold',
+                'Ragdoll',
+                'Selkirk Rex',
+                'Persa',
+                'Egipcio',
+                'Maine Coon',
+                'Siberiano',
+                'Angora'
+            ])->nullable();
             $table->string('color')->nullable();
             $table->unsignedBigInteger('casa_acogida_id');
             $table->foreign('casa_acogida_id')

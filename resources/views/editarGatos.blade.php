@@ -36,7 +36,40 @@
 
         <div class="mb-3">
             <label for="raza" class="form-label">Raza</label>
-            <input type="text" class="form-control" id="raza" name="raza" value="{{ old('raza', $gato->raza) }}">
+            <select class="form-select" id="raza" name="raza">
+                <option value="">Seleccione la raza...</option>
+                @php
+                    $razas = [
+                        'Común Europeo', 
+                        'Balinés', 
+                        'Peterbald', 
+                        'Siamés',
+                        'Oriental',
+                        'Bengalí',
+                        'Ocicat',
+                        'Manx',
+                        'Van Turco',
+                        'Snowshoe',
+                        'Savannah',
+                        'American Curl',
+                        'British Shorthair',
+                        'Scottish Fold',
+                        'Ragdoll',
+                        'Selkirk Rex',
+                        'Persa',
+                        'Egipcio',
+                        'Maine Coon',
+                        'Siberiano',
+                        'Angora'
+                    ];
+                @endphp
+                @foreach($razas as $razaOption)
+                    <option value="{{ $razaOption }}"
+                        {{ old('raza') === $razaOption ? 'selected' : '' }}>
+                        {{ $razaOption }}
+                    </option>
+                @endforeach
+            </select>
         </div>
 
         <div class="mb-3">

@@ -5,58 +5,47 @@
 @section('content')
 <div class="container mt-5">
     <a href="{{ route('gatos.lista') }}" class="btn btn-secondary mb-3">« Volver al listado</a>
-    <div class="card">
+    <div class="card mx-auto" style="max-width: 800px;">
         <div class="row g-0">
-            <div class="col-md-4">
-                <div class="img-container">
-                    @if ($gato->imagen)
-                        <img src="data:image/jpeg;base64,{{ base64_encode($gato->imagen) }}" 
-                             alt="Imagen de {{ $gato->nombre }}" class="img-fluid">
-                    @else
-                        <img src="https://via.placeholder.com/300x200?text=Sin+Imagen" 
-                             alt="Sin imagen" class="img-fluid">
-                    @endif
-                </div>
+            <div class="col-md-5 text-center p-3">
+                @if ($gato->imagen)
+                    <img src="data:image/jpeg;base64,{{ base64_encode($gato->imagen) }}" 
+                         alt="Imagen de {{ $gato->nombre }}" class="img-fluid rounded">
+                @else
+                    <img src="https://via.placeholder.com/400x300?text=Sin+Imagen" 
+                         alt="Sin imagen" class="img-fluid rounded">
+                @endif
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="card-body">
                     <h3 class="card-title">{{ $gato->nombre }}</h3>
+                    <p class="card-text"><strong>Descripción:</strong> {{ $gato->descripcion }}</p>
                     <p class="card-text"><strong>Fecha de nacimiento:</strong> {{ \Carbon\Carbon::parse($gato->edad)->format('d/m/Y') }}</p>
                     @php
-                    $birthDate = \Carbon\Carbon::parse($gato->edad);
-                    $now = \Carbon\Carbon::now();
-                    $diff = $birthDate->diff($now);
-                    $years = $diff->y;
-                    $months = $diff->m;
-                @endphp
-                <p class="card-text"><strong>Edad:</strong>
-                @if ($years > 0 && $months > 0)
-                    {{ $years }} {{ $years == 1 ? 'año' : 'años' }} y {{ $months }} {{ $months == 1 ? 'mes' : 'meses' }}
-                @elseif ($years > 0)
-                    {{ $years }} {{ $years == 1 ? 'año' : 'años' }}
-                @else
-                    {{ $months }} {{ $months == 1 ? 'mes' : 'meses' }}
-                @endif
-            </p>
-                    <p class="card-text"><strong>Raza:</strong> {{ $gato->raza ?? 'No especificada' }}</p>
+                        $diff = \Carbon\Carbon::parse($gato->edad)->diff(\Carbon\Carbon::now());
+                    @endphp
+                    <p class="card-text"><strong>Edad:</strong> 
+                        {{ $diff->y }} {{ $diff->y == 1 ? 'año' : 'años' }} 
+                        y {{ $diff->m }} {{ $diff->m == 1 ? 'mes' : 'meses' }}
+                    </p>
                     <p class="card-text"><strong>Sexo:</strong> {{ ucfirst($gato->sexo) }}</p>
-                    <p class="card-text"><strong>Descripción:</strong> {{ $gato->descripcion }}</p>
-                    
+                    <p class="card-text"><strong>Raza:</strong> {{ $gato->raza ?? 'No especificada' }}</p>
+
                     @if ($gato->casaAcogida)
-                        <p class="card-text"><strong>Nombre de la Casa de Acogida:</strong> {{ $gato->casaAcogida->nombre }}</p>
-                        <p class="card-text"><strong>Teléfono:</strong> {{ $gato->casaAcogida->telefono }}</p>
-                        <p class="card-text"><strong>Email:</strong> {{ $gato->casaAcogida->email }}</p>
-                        <p class="card-text"><strong>Localizacion:</strong> {{ $gato->casaAcogida->localizacion }}</p>
-                    @else
-                        <p class="card-text text-muted">No hay información de la casa de acogida.</p>
+                        <hr>
+                        <h5 class="mt-3">Casa de Acogida</h5>
+                        <p class="mb-1"><strong>Nombre:</strong> {{ $gato->casaAcogida->nombre }}</p>
+                        <p class="mb-1"><strong>Teléfono:</strong> {{ $gato->casaAcogida->telefono }}</p>
+                        <p class="mb-1"><strong>Email:</strong> {{ $gato->casaAcogida->email }}</p>
+                        <p class="mb-3"><strong>Localización:</strong> {{ $gato->casaAcogida->localizacion }}</p>
+                        <div class="text-center">
+                            <a href="{{ route('contacto.crear', $gato->casaAcogida->id) }}" 
+                               class="btn btn-success btn-lg">Contactar con la Casa</a>
+                        </div>
                     @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
-
-@section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 @endsection

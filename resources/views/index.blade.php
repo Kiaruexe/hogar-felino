@@ -26,9 +26,27 @@
             <option value="hembra" {{ request('sexo') == 'hembra' ? 'selected' : '' }}>Hembra</option>
         </select>
     </div>
-    <div class="col-md-3">
-        <input type="text" name="raza" class="form-control" placeholder="Buscar por raza..." value="{{ request('raza') }}">
-    </div>
+    @php
+    $razas = [
+        'Común Europeo', 'Balinés', 'Peterbald', 'Siamés', 'Oriental',
+        'Bengalí', 'Ocicat', 'Manx', 'Van Turco', 'Snowshoe', 'Savannah',
+        'American Curl', 'British Shorthair', 'Scottish Fold', 'Ragdoll',
+        'Selkirk Rex', 'Persa', 'Egipcio', 'Maine Coon', 'Siberiano', 'Angora'
+    ];
+@endphp
+
+<div class="col-md-3">
+    <select class="form-select" name="raza">
+        <option value="">Todas las razas</option>
+        @foreach($razas as $razaOption)
+            <option value="{{ $razaOption }}"
+                {{ request('raza') === $razaOption ? 'selected' : '' }}>
+                {{ $razaOption }}
+            </option>
+        @endforeach
+    </select>
+</div>
+
     <div class="col-md-3">
         <select class="form-select" name="localizacion">
             <option value="">Todas las localizaciones</option>
@@ -102,6 +120,9 @@
                 </div>
                 <div class="card-footer text-center d-flex justify-content-center gap-2">
                     <a href="{{ route('gatos.mostrar', $gato->id) }}" class="btn btn-secondary btn-sm">Ver detalles</a>
+                    @if ($gato->casaAcogida)
+                        <a href="{{ route('contacto.crear', $gato->casaAcogida->id) }}" class="btn btn-success btn-sm">Contactar</a>
+                    @endif
                 </div>
             </div>
         </div>
