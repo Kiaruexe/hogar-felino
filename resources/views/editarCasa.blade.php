@@ -1,4 +1,3 @@
-{{-- resources/views/auth/edit.blade.php --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,7 +26,6 @@
         </div>
     @endif
 
-    {{-- Asegúrate de actualizar la acción al endpoint correcto para la modificación, por ejemplo: --}}
     <form method="POST" action="{{ route('admin.casas.update', $casa->id) }}">
         @csrf
         @method('PUT')

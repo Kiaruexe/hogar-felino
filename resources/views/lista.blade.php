@@ -24,33 +24,25 @@
                                  class="card-img-top" 
                                  alt="Sin imagen">
                         @endif
+
                         <div class="card-body">
                             <h5 class="card-title">{{ $gato->nombre }}</h5>
                             <p class="card-text">
-                                <strong>Nacimiento:</strong> 
+                                <strong>Nacimiento:</strong>
                                 {{ $gato->edad ? \Carbon\Carbon::parse($gato->edad)->format('d/m/Y') : '-' }}<br>
                                 @if($gato->edad)
                                     @php
-                                        $birthDate = \Carbon\Carbon::parse($gato->edad);
-                                        $now = \Carbon\Carbon::now();
-                                        $diff = $birthDate->diff($now);
-                                        $years = $diff->y;
-                                        $months = $diff->m;
+                                        $diff = \Carbon\Carbon::parse($gato->edad)->diff(now());
                                     @endphp
-                                    @if($years > 0 && $months > 0)
-                                    
-                                    <p class="card-text"> <strong>Edad:</strong> {{ $years }} {{ $years == 1 ? 'año' : 'años' }} y {{ $months }} {{ $months == 1 ? 'mes' : 'meses' }}
-                                    @elseif($years > 0)
-                                        <strong>Edad:</strong> {{ $years }} {{ $years == 1 ? 'año' : 'años' }}
-                                    @else
-                                        <strong>Edad:</strong> {{ $months }} {{ $months == 1 ? 'mes' : 'meses' }}
-                                    @endif
+                                    <strong>Edad:</strong> {{ $diff->y }} {{ $diff->y == 1 ? 'año' : 'años' }}
+                                    @if($diff->m > 0) y {{ $diff->m }} {{ $diff->m == 1 ? 'mes' : 'meses' }}@endif
+                                    <br>
                                 @endif
-                                <br><strong>Sexo:</strong> {{ ucfirst($gato->sexo) }}
-                                <br><strong>Raza:</strong> {{ $gato->raza ?? 'No especificada' }}
+                                <strong>Sexo:</strong> {{ ucfirst($gato->sexo) }}<br>
+                                <strong>Raza:</strong> {{ $gato->raza ?? 'No especificada' }}
                             </p>
                         </div>
-                        </div>
+
                         <div class="card-footer text-center">
                             <a href="{{ route('gatos.mostrar', $gato->id) }}" class="btn btn-primary btn-sm">Ver detalles</a>
                         </div>
@@ -59,6 +51,10 @@
             @endforeach
         </div>
     </div>
+    {{-- Enlaces de paginación --}}
+<div class="d-flex justify-content-center my-4">
+    {{ $gatos->links() }}
+  </div>
 @endsection
 
 @section('scripts')

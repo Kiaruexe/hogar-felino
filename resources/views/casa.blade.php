@@ -3,13 +3,11 @@
 @section('title', 'Lista de Gatos')
 
 @section('css')
-<!-- Puedes agregar estilos adicionales específicos para esta vista aquí -->
 @endsection
 
 @section('content')
 @if(Auth::check())
     <div class="row">
-        {{-- Panel lateral para Casas de Acogida --}}
         @if(Auth::user()->rol === 'casa')
             <aside class="col-md-2 mb-4">
                 <div class="card">
@@ -20,7 +18,12 @@
                         <a href="{{ route('contacto.recibidos') }}" class="list-group-item list-group-item-action">
                             Mensajes Recibidos
                         </a>
-                        {{-- Puedes añadir más botones aquí --}}
+                        <a href="{{ route('gatos.registro') }}" class="list-group-item list-group-item-action">
+                            Crear Gato
+                        </a>
+                        <a href="{{ route('gatos.lista') }}" class="list-group-item list-group-item-action">
+                            Listado de Gatos
+                        </a>
                     </div>
                 </div>
             </aside>
@@ -72,7 +75,9 @@
                     </div>
                 @endforeach
             </div>
-
+            <div class="d-flex justify-content-center my-4">
+                {{ $gatos->links() }}
+              </div>
         </main>
     </div>
 @else

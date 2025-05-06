@@ -3,7 +3,7 @@
 @section('title', 'Inicio')
 
 @section('css')
-<!-- Estilos adicionales si son necesarios -->
+
 <style>
     .home-links {
         margin-top: 3rem;

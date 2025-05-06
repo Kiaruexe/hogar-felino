@@ -21,6 +21,7 @@ class RegistroGatoController extends Controller
             'edad'            => 'required|date',
             'sexo'            => 'required|in:macho,hembra',
             'descripcion'     => 'nullable|string',
+            'raza'            => 'nullable|string|max:255',
             'imagen'          => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,avif',
             'casa_acogida_id' => 'required|exists:casas,id',   
          ]);
@@ -29,6 +30,7 @@ class RegistroGatoController extends Controller
         $gato->nombre = $r->nombre;
         $gato->edad = $r->edad;
         $gato->sexo = $r->sexo;
+        $gato->raza = $r->raza;
         $gato->descripcion = $r->descripcion;
     
         // Si se sube una imagen, la convertimos a binario

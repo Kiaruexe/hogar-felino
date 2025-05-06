@@ -3,12 +3,10 @@
 @section('title', 'Gatos en Adopción')
 
 @section('css')
-<!-- Estilos adicionales si es necesario -->
 @endsection
 
 @section('content')
 
-<!-- Banner -->
 <div class="banner mb-4">
     <div class="container text-white text-center">
         <h1>Encuentra tu Compañero Perfecto</h1>
@@ -16,7 +14,6 @@
     </div>
 </div>
 
-<!-- Formulario de filtros -->
 <form class="row g-3 mb-4" method="GET" action="{{ route('gatos.index') }}">
 
     <div class="col-md-2">
@@ -77,7 +74,6 @@
     </div>
 </form>
 
-<!-- Grid de Tarjetas -->
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
     @forelse ($gatos as $gato)
         <div class="col">
@@ -134,6 +130,11 @@
         </div>
     @endforelse
 </div>
+
+{{-- Enlaces de paginación --}}
+<div class="d-flex justify-content-center my-4">
+    {{ $gatos->links() }}
+  </div>
 @endsection
 
 @section('scripts')

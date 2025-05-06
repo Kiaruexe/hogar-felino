@@ -16,7 +16,6 @@
         </div>
     @endif
 
-    <!-- Se usa multipart/form-data para subir la imagen -->
     <form action="{{ route('gato.registro') }}" method="POST" enctype="multipart/form-data">
         @csrf
 

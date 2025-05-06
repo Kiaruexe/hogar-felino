@@ -26,19 +26,37 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('registro') }}">Registrar Casa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('gatos.registro') }}">Registrar Gato</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('casa') }}">Zona Acogida</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="{{ route('about') }}">Sobre Nosotros</a>
                     </li>
 
-                    @if(Auth::check())
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('registro') }}">Registrar Casa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+                    @else
+                        @php $user = Auth::user(); @endphp
+                        @if($user->rol === 'casa')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('casa') }}">Zona Casa</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('contacto.recibidos') }}">Mensajes Recibidos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('gatos.registro') }}">Crear Gato</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('casa.perfil.edit') }}">Editar Perfil</a>
+                            </li>
+
+                        @elseif($user->rol === 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.index') }}">Zona Admin</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <form action="{{ route('logout.casa') }}" method="POST" 
                                   onsubmit="return confirm('¿Estás seguro de salir?');" 
@@ -51,7 +69,7 @@
                                 </button>
                             </form>
                         </li>
-                    @endif
+                    @endguest
                 </ul>
             </div>
         </div>
@@ -70,7 +88,7 @@
     </main>
     <footer class="bg-dark text-white text-center py-3">
         <div class="container">
-            <p>&copy; {{ date('Y') }} Casas de Acogida. Todos los derechos reservados.</p>
+            <p>&copy; {{ date('Y') }} Hogar Felino. Todos los derechos reservados.</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -19,8 +19,7 @@
             </ul>
         </div>
     @endif
-
-    <form method="POST" action="{{ route('gatos.update', $gato->id) }}">
+    <form method="POST" action="{{ route('gatos.update', $gato->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -76,7 +75,10 @@
             <label for="descripcion" class="form-label">Descripción</label>
             <textarea class="form-control" id="descripcion" name="descripcion" rows="3">{{ old('descripcion', $gato->descripcion) }}</textarea>
         </div>
-
+        <div class="mb-3">
+            <label for="imagen" class="form-label">Foto del Gato</label>
+            <input class="form-control" type="file" id="imagen" name="imagen" accept="image/*">
+        </div>
         <div class="mb-3">
             <label for="casa_acogida_id" class="form-label">Casa de Acogida</label>
             <select class="form-select" id="casa_acogida_id" name="casa_acogida_id" required>

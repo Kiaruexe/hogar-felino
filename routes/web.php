@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCasaController;
 use App\Http\Controllers\AdminGatoController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CasaProfileController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\listaGatoController;
 use App\Http\Controllers\MensajeContactoController;
@@ -22,6 +24,7 @@ Route::get('/', [listaGatoController::class, 'home'])->name('gatos.index');
 
 Route::get('/gatos', [listaGatoController::class, 'index'])->name('gatos.lista');
 
+Route::get('/about', [AboutController::class, 'about'])->name('about');
 
 Route::get('/gatos/{id}', [listaGatoController::class, 'mostrar'])->name('gatos.mostrar');
 
@@ -40,19 +43,15 @@ Route::get('/registro-gato', [RegistroGatoController::class, 'index'])->name('ga
 
 Route::post('/registro-gato', [RegistroGatoController::class, 'registro'])->name('gato.registro');
 
-// Ruta para mostrar la lista de gatos
-Route::get('/lista-gatos', [listaGatoController::class, 'index'])->name('gatos.lista');
-
-// Ruta para mostrar el formulario de edición de un gato específico
 Route::get('/gatos/{id}/editar', [listaGatoController::class, 'edit'])->name('gatos.edit');
 
-// Ruta para actualizar un gato (usamos método PUT)
 Route::put('/gatos/{id}', [listaGatoController::class, 'update'])->name('gatos.update');
 
 Route::delete('/gatos/{id}', [listaGatoController::class, 'destroy'])->name('gatos.destroy');
 
+Route::get('/casa/perfil', [CasaProfileController::class, 'edit'])->name('casa.perfil.edit');
 
-
+Route::put('/casa/perfil', [CasaProfileController::class, 'update'])->name('casa.perfil.update');
 
 Route::get('/mensajes/recibidos', [MensajeContactoController::class, 'verParaCasa'])->name('contacto.recibidos');
 
