@@ -117,7 +117,7 @@
                 <div class="card-footer text-center d-flex justify-content-center gap-2">
                     <a href="{{ route('gatos.mostrar', $gato->id) }}" class="btn btn-secondary btn-sm">Ver detalles</a>
                     @if ($gato->casaAcogida)
-                        <a href="{{ route('contacto.crear', $gato->casaAcogida->id) }}" class="btn btn-success btn-sm">Contactar</a>
+                        <a href="{{ route('contacto.crear', $gato->id) }}" class="btn btn-success btn-sm">Contactar</a>
                     @endif
                 </div>
             </div>

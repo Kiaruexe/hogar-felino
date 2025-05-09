@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Casas de Acogida - @yield('title','Inicio')</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     @yield('css')
@@ -55,6 +56,9 @@
                         @elseif($user->rol === 'admin')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.index') }}">Zona Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('casa.perfil.edit') }}">Editar Perfil</a>
                             </li>
                         @endif
                         <li class="nav-item">

@@ -39,8 +39,7 @@
                         <p class="mb-1"><strong>Email:</strong> {{ $gato->casaAcogida->email }}</p>
                         <p class="mb-3"><strong>Localización:</strong> {{ $gato->casaAcogida->localizacion }}</p>
                         <div class="text-center">
-                            <a href="{{ route('contacto.crear', $gato->casaAcogida->id) }}" 
-                               class="btn btn-success btn-lg">Contactar con la Casa</a>
+                            <a href="{{ route('contacto.crear', $gato->id) }}" class="btn btn-success btn-sm">Contactar</a>
                         </div>
                     @endif
                 </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCasaController;
 use App\Http\Controllers\AdminGatoController;
+use App\Http\Controllers\AdminMensajeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CasaProfileController;
 use App\Http\Controllers\ContactoController;
@@ -56,6 +57,7 @@ Route::put('/casa/perfil', [CasaProfileController::class, 'update'])->name('casa
 Route::get('/mensajes/recibidos', [MensajeContactoController::class, 'verParaCasa'])->name('contacto.recibidos');
 
 
+
 });
 
 
@@ -79,6 +81,14 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/casasAdmin/{id}/editar', [AdminCasaController::class, 'edit'])->name('admin.casas.edit');
     Route::put('/casasAdmin/{id}', [AdminCasaController::class, 'update'])->name('admin.casas.update');
     Route::delete('/casasAdmin/{id}', [AdminCasaController::class, 'destroy'])->name('admin.casas.destroy');
+
+
+
+    // Listar mensajes
+    Route::get('admin/mensajes', [AdminMensajeController::class, 'mensajesIndex'])->name('admin.mensajes.index');
+
+    // Eliminar un mensaje
+    Route::delete('admin/mensajes/{mensaje}', [AdminMensajeController::class, 'destroyMensaje'])->name('admin.mensajes.destroy');
     
 });
 

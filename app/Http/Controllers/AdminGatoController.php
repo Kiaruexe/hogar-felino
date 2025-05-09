@@ -12,7 +12,6 @@ class AdminGatoController extends Controller
     {
         $query = Gato::query();
 
-        // Puedes agregar filtros adicionales según sea necesario:
         if ($request->filled('buscar')) {
             $query->where('nombre', 'LIKE', '%' . $request->buscar . '%');
         }
@@ -44,7 +43,7 @@ class AdminGatoController extends Controller
     public function edit($id)
     {
         $gato = Gato::findOrFail($id);
-        $casas = Casa::all(); // Si necesitas mostrar casas para seleccionar
+        $casas = Casa::all();
         return view('editarGatos', compact('gato', 'casas'));
     }
 

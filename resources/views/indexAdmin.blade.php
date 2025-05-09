@@ -27,6 +27,9 @@
         <div class="col-md-4 mb-3">
             <a href="{{ route('admin.gatos.index') }}" class="btn btn-secondary w-100">Panel de gatos</a>
         </div>
+        <div class="col-md-4 mb-3">
+            <a href="{{ route('admin.mensajes.index') }}" class="btn btn-success w-100">  Ver Mensajes recibidos </a>
+          </div>
     </div>
 </div>
 @endsection

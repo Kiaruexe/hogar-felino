@@ -22,7 +22,7 @@ class AdminCasaController extends Controller
         return view('adminCasa', compact('casas'));
     }
 
-    // Muestra los detalles de una casa (opcional)
+    // Muestra los detalles de una casa 
     public function show($id)
     {
         $casa = Casa::findOrFail($id);
