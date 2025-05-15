@@ -5,7 +5,7 @@
     <title>Casas de Acogida - @yield('title','Inicio')</title>
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/style.css') }}">
     @yield('css')
 </head>
 <body>
@@ -14,7 +14,7 @@
         <div class="container">
 
             <a class="navbar-brand d-flex align-items-center" href="{{ route('gatos.index') }}">
-                <img src="/images/logo.png" alt="Logo"/>
+                <img src="/images/logo.png" alt="Logo"  width="45" height="45"/>
                 <span class="ms-2">Hogar Felino</span>
             </a>
 
