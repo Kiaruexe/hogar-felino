@@ -7,34 +7,6 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
-
-    <style>
-        .about-hero {
-            position: relative;
-            overflow: hidden;
-            color: black;             
-            padding: 6rem 0;
-            text-shadow: none;
-            }
-        .display-4 {
-            font-weight: bold;   
-        }
-    .about-hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;                   
-        background: url('/images/about-banner.jpeg') center/cover no-repeat;
-        filter: blur(4px);           
-        transform: scale(1.05);      
-        z-index: -1;
-    }
-
-    .motive-icon {
-        font-size: 2.5rem;
-        color: #83c5be;
-        margin-bottom: 1rem;
-    }
-    </style>
 @endsection
 
 @section('content')

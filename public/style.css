@@ -1,71 +1,56 @@
 /* ================================================
    CUSTOM.CSS - Estilos Globales para la Aplicación
    Paleta:
-     - Primario:  #006d77
-     - Secundario: #83c5be
-     - Acento:     #edf6f9
-     - Oscuro:     #343a40
-     - Claro:      #f8f9fa
-================================================ */
-
-/* --- Reset y Estilos Base --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+   - Primario: `#006d77`
+   - Secundario: `#83c5be`
+   - Acente: `#edf6f9`
+   - Oscuro: `#343a40`
+   - Claro: `#f8f9fa`
+   ================================================ */
 
 html, body {
     height: 100%;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #343a40;
-    background-color: #edf6f9;
+    margin: 0;
+    padding: 0;
 }
 
+/* --- Global Styles --- */
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura visible */
+    background-color: #edf6f9; /* Fondo claro */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #343a40; /* Color oscuro para textos */
 }
 
-/* --- Estructura Principal --- */
+/* Contenedor principal que expande el espacio disponible */
 .content {
-    flex: 1 0 auto; /* Flex grow y no shrink para empujar el footer abajo */
-    width: 100%;
-    padding: 20px 0;
-    margin-bottom: 30px; /* Espacio antes del footer */
+    flex: 1;
 }
 
 /* --- Navegación --- */
 .navbar {
     background-color: #006d77;
-    padding: 0.5rem 1rem; /* Reduce el padding vertical del navbar */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .navbar-brand {
     font-weight: bold;
     display: flex;
     align-items: center;
-    font-size: 1.25rem; /* Ajusta el tamaño del texto */
 }
 
 .navbar-brand img {
-    width: 45px; /* Tamaño reducido del icono */
+    width: 50px;
     height: auto;
-    margin-right: 10px;
 }
 
 .nav-link {
     color: #edf6f9 !important;
-    transition: all 0.2s ease;
-    padding: 0.5rem 1rem;
-    font-weight: 500;
+    transition: color 0.2s;
 }
 
 .nav-link:hover {
     color: #83c5be !important;
-    transform: translateY(-2px);
 }
 
 /* --- Banner Principal --- */
@@ -76,158 +61,136 @@ body {
     padding: 3rem 0;
     color: #fff;
     text-align: center;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .banner h1 {
     font-size: 2.5rem;
     font-weight: bold;
-    margin-bottom: 1rem;
 }
 
 .banner p {
     font-size: 1.25rem;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
-/* --- Formularios --- */
+/* --- About Hero Section --- */
+.about-hero {
+    position: relative;
+    overflow: hidden;
+    color: black;
+    padding: 6rem 0;
+    text-shadow: none;
+    text-align: center;
+}
+
+.about-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('/images/about-banner.jpeg') center/cover no-repeat;
+    filter: blur(4px);
+    transform: scale(1.05);
+    z-index: -1;
+}
+
+.display-4 {
+    font-weight: bold;
+}
+
+.motive-icon {
+    font-size: 2.5rem;
+    color: #83c5be;
+    margin-bottom: 1rem;
+}
+
+/* --- Formularios (Login, Registro de Casas, Registro de Gatos) --- */
 .login-container, .registration-container {
     max-width: 400px;
     margin: 2rem auto;
     background-color: #fff;
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
     padding: 2rem;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .login-container h2, .registration-container h2 {
     text-align: center;
     margin-bottom: 1.5rem;
-    color: #006d77;
 }
 
 .form-control, .form-select {
     border-radius: 0.25rem;
-    border: 1px solid #d1d1d1;
-    padding: 0.625rem;
-    margin-bottom: 1rem;
-    transition: all 0.3s ease;
+    border: 1px solid #ccc;
 }
 
 .form-control:focus, .form-select:focus {
     border-color: #006d77;
-    box-shadow: 0 0 0 0.2rem rgba(0, 109, 119, 0.25);
-    outline: none;
+    box-shadow: none;
 }
 
 /* --- Botones --- */
-.btn {
-    border-radius: 0.25rem;
-    padding: 0.5rem 1.25rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
 .btn-primary {
     background-color: #006d77;
     border-color: #006d77;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
 .btn-primary:hover {
     background-color: #005c67;
     border-color: #005c67;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .btn-secondary {
     background-color: #83c5be;
     border-color: #83c5be;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
 .btn-secondary:hover {
     background-color: #6bb1ad;
     border-color: #6bb1ad;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* --- Filtros --- */
-.filter-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
-
-.filter-container .form-select,
-.filter-container .btn {
-    min-width: 150px;
-}
-
-/* --- Grid de Tarjetas (Listado de Gatos) --- */
+/* --- Grid de Tarjetas (Listado/Index de Gatos) --- */
 .card {
     border: none;
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    transition: transform 0.2s;
     background-color: #fff;
-    height: 100%;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transform: scale(1.02);
 }
 
 .card-img-top {
     width: 100%;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
 }
 
-.card-body {
-    padding: 1.25rem;
-}
-
 .card-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #006d77;
-    margin-bottom: 0.75rem;
-}
-
-.card-text {
-    color: #555;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 /* --- Vistas de Detalle --- */
 .detail-container {
-    max-width: 900px;
+    max-width: 800px;
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 1rem;
     background-color: #fff;
-    border-radius: 0.75rem;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .detail-container img {
     width: 100%;
-    max-height: 450px;
+    max-height: 400px;
     object-fit: cover;
     border-radius: 0.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.detail-info h3 {
-    color: #006d77;
-    margin-bottom: 1rem;
 }
 
 /* --- Footer --- */
@@ -236,19 +199,14 @@ footer {
     color: #edf6f9;
     padding: 1.5rem 0;
     text-align: center;
-    flex-shrink: 0; /* Evita que el footer se encoja */
-    width: 100%;
-    margin-top: auto; /* Empuja el footer al fondo */
 }
 
 footer a {
     color: #83c5be;
     text-decoration: none;
-    transition: color 0.2s;
 }
 
 footer a:hover {
-    color: #edf6f9;
     text-decoration: underline;
 }
 
@@ -256,80 +214,88 @@ footer a:hover {
 .img-container {
     height: 100%;
     background-color: #f8f9fa;
-    border-radius: 0.5rem;
-    overflow: hidden;
 }
 
 .img-container img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.img-container:hover img {
-    transform: scale(1.05);
 }
 
 .ratio img {
     object-fit: cover;
 }
 
-/* --- Botones de acción --- */
-.btn-action {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    border-radius: 0.25rem;
-    margin-right: 0.5rem;
-    transition: all 0.2s ease;
+/* --- Responsive Styles --- */
+@media (max-width: 1200px) {
+    .about-hero {
+        padding: 5rem 0;
+    }
+    
+    .about-hero .display-4 {
+        font-size: 2.5rem;
+    }
 }
 
-.btn-details {
-    background-color: #6c757d;
-    color: white;
+@media (max-width: 992px) {
+    .about-hero {
+        padding: 4rem 0;
+    }
+    
+    .about-hero .display-4 {
+        font-size: 2.2rem;
+    }
+    
+    .motive-icon {
+        font-size: 2.2rem;
+    }
 }
 
-.btn-details:hover {
-    background-color: #5a6268;
-    color: white;
-}
-
-.btn-contact {
-    background-color: #28a745;
-    color: white;
-}
-
-.btn-contact:hover {
-    background-color: #218838;
-    color: white;
-}
-
-/* --- Responsive --- */
 @media (max-width: 768px) {
-    .filter-container {
-        flex-direction: column;
+    .about-hero {
+        padding: 3rem 0;
     }
     
-    .filter-container .form-select,
-    .filter-container .btn {
-        width: 100%;
+    .about-hero .display-4 {
+        font-size: 1.8rem;
     }
     
-    .card-img-top {
-        height: 180px;
-    }
-}
-
-@media (max-width: 576px) {
-    .navbar-brand img {
-        width: 30px;
+    .motive-icon {
+        font-size: 2rem;
     }
     
     .banner h1 {
         font-size: 2rem;
     }
     
-    .detail-container {
+    .banner p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-hero {
+        padding: 2rem 0;
+    }
+    
+    .about-hero .display-4 {
+        font-size: 1.5rem;
+    }
+    
+    .motive-icon {
+        font-size: 1.8rem;
+    }
+    
+    .about-hero::before {
+        filter: blur(2px);
+    }
+    
+    .login-container, .registration-container {
         padding: 1.5rem;
+        margin: 1rem auto;
+    }
+    
+    .card-img-top {
+        height: 150px;
     }
 }
