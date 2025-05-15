@@ -23,8 +23,6 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/', [listaGatoController::class, 'home'])->name('gatos.index');
 
-Route::get('/gatos', [listaGatoController::class, 'index'])->name('gatos.lista');
-
 Route::get('/about', [AboutController::class, 'about'])->name('about');
 
 Route::get('/gatos/{id}', [listaGatoController::class, 'mostrar'])->name('gatos.mostrar');

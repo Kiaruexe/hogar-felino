@@ -1,13 +1,11 @@
-{{-- resources/views/auth/register.blade.php --}}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Registro de Casa de Acogida</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-</head>
-<body>
+@extends('layout')
+
+@section('title', 'Registro de Casa de Acogida')
+
+@section('css')
+@endsection
+
+@section('content')
 <div class="container mt-5">
     <h2 class="mb-4 text-center">Registro de Casa de Acogida</h2>
 
@@ -90,7 +88,7 @@
         <button type="submit" class="btn btn-primary w-100">Registrarse</button>
     </form>
 </div>
+@endsection
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@section('scripts')
+@endsection

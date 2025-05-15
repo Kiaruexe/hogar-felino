@@ -10,13 +10,6 @@ use Illuminate\Pagination\Paginator;
 
 class ListaGatoController extends Controller
 {
-    public function index(Request $request)
-    {
-        // Paginamos 20 gatos por página
-        $gatos = Gato::paginate(20);
-
-        return view('lista', compact('gatos'));
-    }
 
     public function mostrar($id)
     {
@@ -98,7 +91,7 @@ class ListaGatoController extends Controller
     
         $gato->save();
     
-        return redirect()->route('gatos.lista')
+        return redirect()->route('casa')
                          ->with('status', 'Gato actualizado correctamente.');
     }
     
@@ -123,7 +116,7 @@ class ListaGatoController extends Controller
 
         $gato->delete();
 
-        return redirect()->route('gatos.lista')
+        return redirect()->route('casa')
                          ->with('success', 'Gato eliminado correctamente.');
     }
 }

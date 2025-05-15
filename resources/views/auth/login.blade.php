@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Login Casa de Acogida</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-<body>
+@extends('layout')
+
+@section('title', 'Login Casa de Acogida')
+
+@section('css')
+@endsection
+
+@section('content')
 <div class="container mt-5">
     <h2>Login Casa de Acogida</h2>
 
@@ -24,21 +24,35 @@
 
         <div class="mb-3">
             <label for="email" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+            <input type="email"
+                   class="form-control"
+                   id="email"
+                   name="email"
+                   value="{{ old('email') }}"
+                   required autofocus>
         </div>
 
         <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <input type="password"
+                   class="form-control"
+                   id="password"
+                   name="password"
+                   required>
         </div>
         
         <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="remember" name="remember">
+            <input type="checkbox"
+                   class="form-check-input"
+                   id="remember"
+                   name="remember" {{ old('remember') ? 'checked' : '' }}>
             <label class="form-check-label" for="remember">Recordarme</label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
     </form>
 </div>
-</body>
-</html>
+@endsection
+
+@section('scripts')
+@endsection

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container mt-5">
-    <a href="{{ route('gatos.lista') }}" class="btn btn-secondary mb-3">« Volver al listado</a>
+    <a href="{{ route('gatos.index') }}" class="btn btn-secondary mb-3">« Volver al listado</a>
     <div class="card mx-auto" style="max-width: 800px;">
         <div class="row g-0">
             <div class="col-md-5 text-center p-3">

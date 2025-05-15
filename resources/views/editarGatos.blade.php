@@ -19,6 +19,7 @@
             </ul>
         </div>
     @endif
+
     <form method="POST" action="{{ route('gatos.update', $gato->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -79,17 +80,24 @@
             <label for="imagen" class="form-label">Foto del Gato</label>
             <input class="form-control" type="file" id="imagen" name="imagen" accept="image/*">
         </div>
+
+        @if(Auth::user()->rol === 'admin')
         <div class="mb-3">
             <label for="casa_acogida_id" class="form-label">Casa de Acogida</label>
             <select class="form-select" id="casa_acogida_id" name="casa_acogida_id" required>
                 @foreach ($casas as $casa)
-                    <option value="{{ $casa->id }}" {{ old('casa_acogida_id', $gato->casa_acogida_id) == $casa->id ? 'selected' : '' }}>
+                    <option value="{{ $casa->id }}"
+                        {{ old('casa_acogida_id', $gato->casa_acogida_id) == $casa->id ? 'selected' : '' }}>
                         {{ $casa->nombre }}
                     </option>
                 @endforeach
             </select>
         </div>
-
+        @else
+            {{-- Para usuarios no-admin, enviamos oculto el id actual --}}
+            <input type="hidden" name="casa_acogida_id"
+                value="{{ old('casa_acogida_id', $gato->casa_acogida_id) }}">
+        @endif
         <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>
     </form>
 </div>

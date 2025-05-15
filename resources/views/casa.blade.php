@@ -21,9 +21,6 @@
                         <a href="{{ route('gatos.registro') }}" class="list-group-item list-group-item-action">
                             Crear Gato
                         </a>
-                        <a href="{{ route('gatos.lista') }}" class="list-group-item list-group-item-action">
-                            Listado de Gatos
-                        </a>
                     </div>
                 </div>
             </aside>
