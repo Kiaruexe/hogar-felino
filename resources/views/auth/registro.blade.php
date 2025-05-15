@@ -86,6 +86,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+        <br><br><br>
     </form>
 </div>
 @endsection
