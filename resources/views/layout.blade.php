@@ -14,7 +14,7 @@
         <div class="container">
 
             <a class="navbar-brand d-flex align-items-center" href="{{ route('gatos.index') }}">
-                <img src="/images/logo.png" alt="Logo" />
+                <img src="/images/logo.png" alt="Logo"/>
                 <span class="ms-2">Hogar Felino</span>
             </a>
 

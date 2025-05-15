@@ -32,14 +32,15 @@ body {
 .content {
     flex: 1 0 auto; /* Flex grow y no shrink para empujar el footer abajo */
     width: 100%;
-    padding: 20px 0;
-    margin-bottom: 30px; /* Espacio antes del footer */
+    padding: 15px 0; /* Reducido de 20px */
+    max-width: 1140px; /* Limitar el ancho máximo */
+    margin: 0 auto 20px; /* Centrado y margen inferior reducido */
 }
 
 /* --- Navegación --- */
 .navbar {
     background-color: #006d77;
-    padding: 0.5rem 1rem; /* Reduce el padding vertical del navbar */
+    padding: 0.4rem 0.8rem; /* Reducido para una barra de navegación más compacta */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -47,13 +48,13 @@ body {
     font-weight: bold;
     display: flex;
     align-items: center;
-    font-size: 1.25rem; /* Ajusta el tamaño del texto */
+    font-size: 1.1rem; /* Reducido de 1.25rem */
 }
 
 .navbar-brand img {
-    width: 35px; /* Tamaño reducido del icono */
+    width: 45px; /* Reducido de 35px */
     height: auto;
-    margin-right: 10px;
+    margin-right: 8px; /* Ajustado para mantener la proporción */
 }
 
 .nav-link {
@@ -157,14 +158,20 @@ body {
 /* --- Filtros --- */
 .filter-container {
     display: flex;
-    gap: 10px;
-    margin-bottom: 2rem;
+    gap: 8px;
+    margin-bottom: 2 rem; /* Reducido de 2rem */
     flex-wrap: wrap;
+    justify-content: center; /* Centrar los filtros */
 }
 
-.filter-container .form-select,
+.filter-container .form-select {
+    min-width: 150px;
+    max-width: 180px; /* Limitar el ancho */
+}
+
 .filter-container .btn {
     min-width: 150px;
+    max-width: 120px; /* Botón de filtro más pequeño */
 }
 
 /* --- Grid de Tarjetas (Listado de Gatos) --- */
@@ -173,10 +180,12 @@ body {
     border-radius: 0.75rem;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem; /* Reducido de 1.5rem */
     transition: all 0.3s ease;
     background-color: #fff;
     height: 100%;
+    max-width: 280px; /* Limitar el ancho máximo */
+    margin: 0 auto 1.2rem; /* Centrar y reducir margen inferior */
 }
 
 .card:hover {
@@ -186,19 +195,19 @@ body {
 
 .card-img-top {
     width: 100%;
-    height: 220px;
+    height: 180px; /* Reducido de 220px */
     object-fit: cover;
 }
 
 .card-body {
-    padding: 1.25rem;
+    padding: 1.25rem; /* Reducido de 1.25rem */
 }
 
 .card-title {
-    font-size: 1.3rem;
+    font-size: 1.15rem; /* Reducido de 1.3rem */
     font-weight: 600;
     color: #006d77;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem; /* Reducido de 0.75rem */
 }
 
 .card-text {
@@ -208,9 +217,9 @@ body {
 
 /* --- Vistas de Detalle --- */
 .detail-container {
-    max-width: 900px;
+    max-width: 800px; /* Reducido de 900px */
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 1.5rem; /* Reducido de 2rem */
     background-color: #fff;
     border-radius: 0.75rem;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
@@ -320,9 +329,21 @@ footer a:hover {
     }
 }
 
+@media (min-width: 768px) {
+    .row {
+        margin-right: -10px;
+        margin-left: -10px;
+    }
+    
+    [class*="col-"] {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
 @media (max-width: 576px) {
     .navbar-brand img {
-        width: 30px;
+        width: 22px; /* Reducido más para móviles */
     }
     
     .banner h1 {
@@ -331,5 +352,19 @@ footer a:hover {
     
     .detail-container {
         padding: 1.5rem;
+    }
+}
+
+/* --- Sistema de grid para cards mejorado --- */
+@media (min-width: 992px) {
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.2rem;
+    }
+    
+    .card {
+        margin: 0; /* Eliminar margen automático en grid */
+        width: 100%;
     }
 }
