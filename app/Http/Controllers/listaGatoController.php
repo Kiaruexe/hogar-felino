@@ -38,8 +38,8 @@ class ListaGatoController extends Controller
             });
         }
 
-        // Cambiamos get() por paginate(20)
-        $gatos = $query->paginate(20)->appends($r->query());
+        // Cambiamos get() por paginate(12)
+        $gatos = $query->paginate(12)->appends($r->query());
 
         return view('index', compact('gatos'));
     }
@@ -101,7 +101,7 @@ class ListaGatoController extends Controller
         $casa = auth()->guard('casa')->user();
 
         $gatos = Gato::where('casa_acogida_id', $casa->id)
-                     ->paginate(20);
+                     ->paginate(12);
 
         return view('casa', compact('gatos'));
     }

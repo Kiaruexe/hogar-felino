@@ -11,7 +11,7 @@ class AdminMensajeController extends Controller
     {
         // Carga mensajes paginados con sus relaciones
         $mensajes = MensajeContacto::with('gato.casaAcogida')
-                           ->paginate(20);
+                           ->paginate(12);
 
         return view('adminMensajes', compact('mensajes'));
     }
